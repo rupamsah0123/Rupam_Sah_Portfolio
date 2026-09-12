@@ -4,13 +4,13 @@ This is my personal portfolio website using html5,css3 and javascript.
 Author-Rupam Sah
 # Web Project
 
-## 📌 About the Project
+##  About the Project
 
 This is a web development project created using **HTML, CSS, and JavaScript**.
 
 The project provides a user-friendly and responsive web interface with interactive features implemented using JavaScript. It also includes a feedback section that allows users to provide their feedback.
 
-## 🚀 Features
+##  Features
 
 * User-friendly interface
 * Responsive web design
@@ -20,13 +20,13 @@ The project provides a user-friendly and responsive web interface with interacti
 * JavaScript-based functionality
 * Feedback section for collecting user feedback
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 * HTML5
 * CSS3
 * JavaScript
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 MyProject/
@@ -42,7 +42,7 @@ MyProject/
 └── README.md
 ```
 
-## ▶️ How to Run the Project
+##  How to Run the Project
 
 ### Method 1: Open Directly
 
@@ -64,21 +64,21 @@ cd YOUR_PROJECT_FOLDER
 
 Open `index.html` in your browser.
 
-## 🌐 Live Demo
+##  Live Demo
 
 If the project is deployed, add your live website link here:
 
 **Live Demo:** YOUR_LIVE_WEBSITE_URL
 
-## 💬 Feedback
+##  Feedback
 
 The project includes a feedback section where users can submit their feedback about the website.
 
-## 👨‍💻 Author
+## 👨 Author
 
 **Your Name**
 
-## 📄 License
+##  License
 
 This project was created for learning and development purposes.
 
