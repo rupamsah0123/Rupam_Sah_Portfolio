@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback — Rupam Sah</title>
+<meta name="description" content="Send feedback, a question, or a collaboration inquiry to Rupam Sah.">
+<meta name="theme-color" content="#10141F">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="feedback-style.css">
+<script>(function(){try{if(localStorage.getItem('rs-theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="index.html#top" class="logo">RS <span>LECTURER · CSE</span></a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#research">Research</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="feedback.html" class="nav-cta">Feedback</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="fb-hero">
+    <div class="wrap">
+      <div class="eyebrow reveal">Feedback</div>
+      <h1 class="reveal">Have a question, a correction, or a collaboration idea?</h1>
+      <p class="fb-lede reveal">Whether it's feedback on a paper, a note on the course you're taking, or an idea for research collaboration — this goes straight to my inbox.</p>
+    </div>
+  </section>
+
+  <section class="fb-form-section">
+    <div class="wrap fb-wrap">
+
+      <form id="feedbackForm" class="fb-form reveal" action="https://formspree.io/f/mrpzavde" method="POST" novalidate>
+
+        <!-- Honeypot field: invisible to humans, catches basic spam bots -->
+        <input type="text" name="_gotcha" class="fb-honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="fb-row">
+          <div class="fb-field">
+            <label for="fbName">Name <span class="req">*</span></label>
+            <input type="text" id="fbName" name="name" required autocomplete="name" placeholder="Your full name">
+            <span class="fb-error" data-error-for="fbName"></span>
+          </div>
+          <div class="fb-field">
+            <label for="fbEmail">Email <span class="req">*</span></label>
+            <input type="email" id="fbEmail" name="email" required autocomplete="email" placeholder="you@example.com">
+            <span class="fb-error" data-error-for="fbEmail"></span>
+          </div>
+        </div>
+
+        <div class="fb-field">
+          <label for="fbReason">What's this about? <span class="req">*</span></label>
+          <select id="fbReason" name="reason" required>
+            <option value="" disabled selected>Choose a reason</option>
+            <option value="General feedback">General feedback on the site or my work</option>
+            <option value="Research collaboration">Research collaboration inquiry</option>
+            <option value="Teaching / course question">Teaching or course-related question</option>
+            <option value="Guest lecture / talk invitation">Guest lecture or talk invitation</option>
+            <option value="Correction">Correction to something published here</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="fb-error" data-error-for="fbReason"></span>
+        </div>
+
+        <div class="fb-field">
+          <label for="fbMessage">Message <span class="req">*</span></label>
+          <textarea id="fbMessage" name="message" required rows="6" minlength="10" maxlength="1000" placeholder="Write your message here..."></textarea>
+          <div class="fb-meta-row">
+            <span class="fb-error" data-error-for="fbMessage"></span>
+            <span class="fb-counter" id="fbCounter">0 / 1000</span>
+          </div>
+        </div>
+
+        <div class="fb-field fb-rating-field">
+          <label>How would you rate your experience on this site? <span class="fb-optional">(optional)</span></label>
+          <div class="fb-rating" id="fbRating" role="radiogroup" aria-label="Site rating">
+            <button type="button" class="fb-star" data-value="1" aria-label="1 star">★</button>
+            <button type="button" class="fb-star" data-value="2" aria-label="2 stars">★</button>
+            <button type="button" class="fb-star" data-value="3" aria-label="3 stars">★</button>
+            <button type="button" class="fb-star" data-value="4" aria-label="4 stars">★</button>
+            <button type="button" class="fb-star" data-value="5" aria-label="5 stars">★</button>
+          </div>
+          <input type="hidden" name="rating" id="fbRatingValue" value="">
+        </div>
+
+        <button type="submit" class="btn btn-primary fb-submit" id="fbSubmitBtn">
+          <span class="fb-btn-text">Send message →</span>
+        </button>
+
+        <p class="fb-fallback">
+          Prefer email directly? Write to
+          <a href="mailto:rupamsah425@gmail.com">rupamsah425@gmail.com</a>
+        </p>
+      </form>
+
+      <div class="fb-success" id="fbSuccess" hidden>
+        <div class="fb-success-icon">✓</div>
+        <h2>Message sent.</h2>
+        <p>Thanks for reaching out — I'll get back to you as soon as I can.</p>
+        <a href="index.html#top" class="btn btn-ghost">← Back to homepage</a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <p>© 2026 RUPAM SAH - LECTURER, CSE</p>
+    <div class="footer-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <p>CHENNAI, INDIA</p>
+  </div>
+</footer>
+
+<script src="feedback.js"></script>
+</body>
+</html>
