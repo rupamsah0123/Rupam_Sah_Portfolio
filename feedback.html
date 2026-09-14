@@ -16,6 +16,8 @@
 </head>
 <body>
 
+<div class="progress-bar" id="progressBar"></div>
+
 <header id="siteHeader">
   <nav class="wrap">
     <a href="index.html#top" class="logo">RS <span>LECTURER · CSE</span></a>
@@ -28,11 +30,26 @@
       <a href="feedback.html" class="nav-cta">Feedback</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">☾</button>
     </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobilePanel">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="index.html#about">About</a>
+    <a href="index.html#research">Research</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#education">Education</a>
+    <a href="index.html#teaching">Teaching</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="feedback.html" class="nav-cta">Feedback</a>
+    <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark mode">☾</button>
+  </div>
 </header>
 
 <main>
   <section class="fb-hero">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="eyebrow reveal">Feedback</div>
       <h1 class="reveal">Have a question, a correction, or a collaboration idea?</h1>
@@ -41,6 +58,7 @@
   </section>
 
   <section class="fb-form-section">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap fb-wrap">
 
       <form id="feedbackForm" class="fb-form reveal" action="https://formspree.io/f/mrpzavde" method="POST" novalidate>
@@ -129,6 +147,9 @@
   </div>
 </footer>
 
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+<script src="script.js"></script>
 <script src="feedback.js"></script>
 </body>
 </html>

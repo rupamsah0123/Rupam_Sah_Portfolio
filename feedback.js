@@ -6,26 +6,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- Theme toggle (light / dark) ---------- */
-  const themeBtn = document.getElementById('themeToggle');
-  if(themeBtn){
-    function updateThemeIcon(){
-      themeBtn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀' : '☾';
-    }
-    updateThemeIcon();
-    themeBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if(isDark){
-        document.documentElement.removeAttribute('data-theme');
-        try{ localStorage.setItem('rs-theme', 'light'); }catch(e){}
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        try{ localStorage.setItem('rs-theme', 'dark'); }catch(e){}
-      }
-      updateThemeIcon();
-    });
-  }
-
   const form = document.getElementById('feedbackForm');
   if(!form) return;
 
@@ -164,18 +144,5 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.classList.remove('is-loading');
     }
   });
-
-  /* ---------- Reveal-on-scroll (same behavior as main site) ---------- */
-  const revealEls = document.querySelectorAll('.reveal');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('in'));
-  }
 
 });

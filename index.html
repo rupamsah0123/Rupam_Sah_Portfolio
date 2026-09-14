@@ -58,10 +58,16 @@
     <div class="hero-grid-lines" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
+        <div class="hero-typewriter hero-in" style="--d:0" aria-hidden="true">
+          <span class="hero-typewriter-text" id="heroTypewriter"></span><span class="hero-typewriter-cursor"></span>
+        </div>
+        <p class="sr-only" id="heroTypewriterSr">Hi, I am Rupam Sah</p>
         <div class="status-badge hero-in" style="--d:0"><span class="status-dot"></span>Open to research collaborations</div>
         <div class="hero-kicker hero-in" style="--d:0">Computer Science &amp; Engineering</div>
-        <h1 class="hero-in" style="--d:1">Teaching machines to <em>see</em> what clinicians look for.</h1>
-        <p class="lede hero-in" style="--d:2">Rupam Sah is a Lecturer of Computer Science and Engineering, working at the intersection of deep learning and medical image analysis - from lecture halls to CT scan segmentation pipelines.</p>
+        <!-- <h1 class="hero-in" style="--d:1">Teaching machines to <em>see</em> what clinicians look for.</h1> -->
+          <h1 class="hero-in" style="--d:1">Where knowledge meets <em>technology, and teaching inspires innovation.</em></h1>
+         
+        <p class="lede hero-in" style="--d:2">Rupam Sah is a Lecturer in Computer Science and Engineering, dedicated to creating engaging learning experiences and helping students build strong foundations in computing and problem-solving</p>
         <div class="hero-actions hero-in" style="--d:3">
           <a href="#publications" class="btn btn-primary"><span>View publications</span> →</a>
           <a href="resume.pdf" download class="btn btn-ghost"><span>Download résumé</span> ↓</a>
@@ -73,12 +79,6 @@
           <div class="stat"><b data-count="2025" data-decimals="0">0</b><span>M.TECH, NIT JALANDHAR</span></div>
         </div>
       </div>
-      <div class="hero-photo hero-in" style="--d:2">
-        <div class="photo-frame tilt-card">
-          <img src="Photo1.jpg" alt="Portrait of Rupam Sah">
-          <div class="photo-shine" aria-hidden="true"></div>
-        </div>
-      </div>
     </div>
     <button class="scroll-cue" id="scrollCue" aria-label="Scroll to About section">
       <span></span> Scroll
@@ -87,37 +87,50 @@
 
   <!-- ABOUT -->
   <section id="about">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Profile</div>
         <h2>Grounded in the classroom, driven by research.</h2>
+        <p>Lecturer in Computer Science with an M.Tech from NIT Jalandhar and a research background in medical image analysis - now exploring high-performance and numerical computing alongside it.</p>
       </div>
-      <div class="about-grid">
-        <div class="reveal">
-          <p><strong>Rupam Sah</strong> holds an M.Tech in Computer Science and Engineering from NIT Jalandhar, Punjab and a B.Tech from Tezpur University, Assam. He currently teaches and mentors undergraduate engineering students as a Lecturer in the Department of Computer Science and Engineering at Sai University, Chennai.</p>
-          <p>His research sits at the intersection of <strong>machine learning, deep learning and medical image analysis</strong> - most notably, building attention-driven neural architectures that improve how CT scans are segmented for downstream clinical use. His work on pancreas segmentation has been published in IEEE Xplore and Springer's Lecture Notes in Computer Science (LNCS) proceedings, and his more recent work extends into self-supervised learning and graph neural networks.</p>
-          <p>In the classroom, he delivers core undergraduate courses in programming and algorithm design, supervises laboratory sessions built around hands-on code execution, and contributes to curriculum design and departmental evaluation. Outside the lab and lecture hall, he has represented his department as a placement coordinator, served as a teaching assistant across two academic years during his education and led a university-wide student council body.</p>
-          <a class="inline-link" href="#contact">Reach out for collaboration or teaching inquiries →</a>
+
+      <div class="area-grid reveal">
+        <div class="area-card tilt-card">
+          <span class="area-index">01</span>
+          <h3>Current Role</h3>
+          <p>Lecturer, Computer Science - Sai University, Chennai. Designs and delivers modules in Web Technology and Design &amp; Analysis of Algorithms, from lectures to lab to assessment.</p>
         </div>
-        <div class="reveal">
-          <div class="pillars">
-            <div class="pillar"><span class="pillar-label">ROLE</span><span class="pillar-val">Lecturer, CSE - Sai University</span></div>
-            <div class="pillar"><span class="pillar-label">SINCE</span><span class="pillar-val">July 2026</span></div>
-            <div class="pillar"><span class="pillar-label">FOCUS</span><span class="pillar-val">Medical image segmentation, attention mechanisms, self-supervised learning</span></div>
-            <div class="pillar"><span class="pillar-label">TEACHES</span><span class="pillar-val">Programming (C/C++/Python), OOP, DSA, Machine Learning, Deep Learning</span></div>
-            <div class="pillar"><span class="pillar-label">BASED IN</span><span class="pillar-val">Bengaluru, India</span></div>
-            <div class="pillar"><span class="pillar-label">GATE</span><span class="pillar-val">CSE Qualified, 2023</span></div>
-          </div>
-          <div class="interest-tags">
-            <span>Machine Learning</span><span>Deep Learning</span><span>Medical Image Analysis</span><span>Healthcare AI</span>
-          </div>
+        <div class="area-card tilt-card">
+          <span class="area-index">02</span>
+          <h3>Research Focus</h3>
+          <p>Medical image segmentation and attention-driven architectures, with a growing interest in high-performance computing, numerical methods and efficient computational techniques.</p>
         </div>
+        <div class="area-card tilt-card">
+          <span class="area-index">03</span>
+          <h3>Education</h3>
+          <p>M.Tech, Computer Science &amp; Engineering - NIT Jalandhar, Punjab. B.Tech, Computer Science &amp; Engineering - Tezpur University, Assam.</p>
+        </div>
+        <div class="area-card tilt-card">
+          <span class="area-index">04</span>
+          <h3>Academic Service</h3>
+          <p>Teaching Assistant and Placement Representative at NIT Jalandhar (2023-25); Convenor, Social Service Club, Tezpur University Students' Council.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="interest-tags">
+          <span>Machine Learning</span><span>Deep Learning</span><span>Data Structures &amp; Algorithms</span><span>Medical Image Analysis</span><span>High-Performance Computing</span>
+        </div>
+        <a class="inline-link" href="#contact">Reach out for collaboration or teaching inquiries →</a>
       </div>
     </div>
   </section>
 
+
   <!-- RESEARCH AREAS -->
   <section id="research" class="alt">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Research</div>
@@ -165,6 +178,7 @@
 
   <!-- PUBLICATIONS -->
   <section id="publications">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Publications</div>
@@ -182,7 +196,7 @@
           <span class="pub-num">01</span>
           <div>
             <div class="pub-title">A Hybrid Framework for Automated Pancreas Segmentation in Abdominal CT Imaging</div>
-            <div class="pub-meta">Rupam Sah, Dr. Renu Dhir - Proceedings of PReMI 2025, IIT Delhi</div>
+            <div class="pub-meta">Rupam Sah (first author), Dr. Renu Dhir - Proceedings of PReMI 2025, IIT Delhi</div>
           </div>
           <span class="pub-venue">Springer LNCS</span>
         </div>
@@ -190,7 +204,7 @@
           <span class="pub-num">02</span>
           <div>
             <div class="pub-title">AI-Driven Approaches for Improved Detection and Diagnosis of Pancreatic Cancer</div>
-            <div class="pub-meta">Rupam Sah, Dr. Renu Dhir - Proceedings of ICAIHC 2025, NIT Raipur</div>
+            <div class="pub-meta">Rupam Sah (first author), Dr. Renu Dhir - Proceedings of ICAIHC 2025, NIT Raipur</div>
           </div>
           <span class="pub-venue">IEEE Xplore</span>
         </div>
@@ -216,6 +230,7 @@
 
   <!-- EXPERIENCE -->
   <section id="experience" class="alt">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Academic Experience</div>
@@ -224,12 +239,13 @@
       <div class="timeline reveal">
         <div class="tl-item">
           <span class="tl-date">July 2026 - Present</span>
-          <h3>Lecturer, Department of Computer Science &amp; Engineering</h3>
+          <h3>Lecturer, School of Computing and Data Science</h3>
           <div class="tl-org">Sai University, Chennai, India</div>
           <ul>
-            <li>Delivers lectures for undergraduate (B.Tech) engineering courses in Computer Science.</li>
-            <li>Supervises practical laboratory sessions, with a focus on experiential learning and code execution.</li>
-            <li>Mentors undergraduate students through their academic progression.</li>
+            <li>Designs and delivers undergraduate modules in Web Technology and Design &amp; Analysis of Algorithms (DAA) through lectures, tutorials, labs, coursework and examinations.</li>
+            <li>Develops lecture materials, lab exercises, assignments and marking schemes covering client–server programming, internet-based application development, and algorithm design and complexity analysis.</li>
+            <li>Provides academic advising and student support, assessing performance and giving constructive feedback.</li>
+            <li>Contributes to curriculum development, course planning and academic administration.</li>
           </ul>
         </div>
         <div class="tl-item">
@@ -262,7 +278,14 @@
         </div>
       </div>
       <div class="course-block reveal">
-        <h4>Courses taught</h4>
+        <h4>Currently teaching — Sai University</h4>
+        <div class="course-grid">
+          <div><span class="course-tag">Theory + Lab</span>Web Technology</div>
+          <div><span class="course-tag">Theory + Lab</span>Design and Analysis of Algorithms</div>
+        </div>
+      </div>
+      <div class="course-block reveal">
+        <h4>Previously taught — Dayananda Sagar University</h4>
         <div class="course-grid">
           <div><span class="course-tag">Theory</span>Object-Oriented Programming using Python</div>
           <div><span class="course-tag">Theory</span>C Programming for Problem Solving</div>
@@ -276,6 +299,7 @@
 
   <!-- EDUCATION -->
   <section id="education">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Education</div>
@@ -302,6 +326,7 @@
 
   <!-- TEACHING PHILOSOPHY -->
   <section id="philosophy" class="alt">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap philosophy-wrap">
       <div class="eyebrow reveal">Teaching Philosophy</div>
       <blockquote class="reveal">"Programming and algorithms are best understood by running them, breaking them, and running them again. I try to keep every lecture tied to something a student can execute, test and question in the same sitting."</blockquote>
@@ -310,17 +335,17 @@
 
   <!-- TEACHING / SKILLS -->
   <section id="teaching">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap split">
       <div class="reveal">
         <div class="eyebrow">Teaching</div>
         <h2 class="split-h2">Expertise in the classroom.</h2>
-        <p class="split-sub">Core undergraduate subjects across programming and applied AI.</p>
+        <p class="split-sub">Currently teaching at Sai University, with prior experience across core CS fundamentals.</p>
         <div class="skill-pills">
-          <span>Programming (C, C++, Python)</span>
+          <span>Web Technology</span>
+          <span>Design &amp; Analysis of Algorithms</span>
           <span>Object-Oriented Programming</span>
-          <span>Data Structures &amp; Algorithms</span>
-          <span>Machine Learning</span>
-          <span>Deep Learning</span>
+          <span>Programming (C, C++, Python)</span>
         </div>
       </div>
       <div class="reveal">
@@ -330,6 +355,10 @@
           <div class="skill-cat">
             <h4>Languages</h4>
             <div class="skill-pills"><span>Python</span><span>C</span><span>C++</span><span>SQL</span></div>
+          </div>
+          <div class="skill-cat">
+            <h4>Core Domains</h4>
+            <div class="skill-pills"><span>Data Structures &amp; Algorithms</span><span>Machine Learning</span><span>Deep Learning</span></div>
           </div>
           <div class="skill-cat">
             <h4>Frameworks &amp; Tools</h4>
@@ -346,6 +375,7 @@
 
   <!-- PROJECTS -->
   <section id="projects" class="alt">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Project</div>
@@ -372,21 +402,65 @@
 
   <!-- CERTIFICATIONS / LEADERSHIP -->
   <section id="cert">
-    <div class="wrap split">
-      <div class="reveal">
-        <div class="eyebrow">Certifications &amp; Achievements</div>
-        <div class="cert-list">
-          <div class="cert-item"><span class="yr">2023</span><p>GATE (CSE) Qualified</p></div>
-          <div class="cert-item"><span class="yr">NPTEL</span><p>Data Analytics with Python</p></div>
-          <div class="cert-item last"><span class="yr">Udemy</span><p>The Complete Web Development Bootcamp - Dr. Angela Yu</p></div>
+    <div class="fx-dots" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Recognition</div>
+        <h2>Certifications, achievements &amp; academic service.</h2>
+        <p>Credentials earned alongside the classroom and the lab.</p>
+      </div>
+
+      <div class="cred-group reveal">
+        <h3 class="cred-group-title">Certifications &amp; Achievements</h3>
+        <div class="cred-grid">
+          <div class="cred-card tilt-card">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"/></svg>
+            </div>
+            <span class="cred-yr">2023</span>
+            <p class="cred-title">GATE (CSE) Qualified</p>
+          </div>
+          <div class="cred-card tilt-card">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5-10-5Z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>
+            </div>
+            <span class="cred-yr">NPTEL</span>
+            <p class="cred-title">Data Analytics with Python</p>
+          </div>
+          <div class="cred-card tilt-card">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M2 20h20"/><path d="M9 9l-2 2 2 2M15 9l2 2-2 2"/></svg>
+            </div>
+            <span class="cred-yr">Udemy</span>
+            <p class="cred-title">The Complete Web Development Bootcamp — Dr. Angela Yu</p>
+          </div>
         </div>
       </div>
-      <div class="reveal">
-        <div class="eyebrow">Academic Leadership</div>
-        <div class="cert-list">
-          <div class="cert-item"><span class="yr">2024–25</span><p>Placement Representative (CSE), NIT Jalandhar</p></div>
-          <div class="cert-item"><span class="yr">2023–25</span><p>Teaching Assistant, Department of CSE, NIT Jalandhar</p></div>
-          <div class="cert-item last"><span class="yr">2021–22</span><p>Convenor, Social Service Club, Tezpur University Students Council</p></div>
+
+      <div class="cred-group reveal">
+        <h3 class="cred-group-title">Academic Leadership</h3>
+        <div class="cred-grid">
+          <div class="cred-card tilt-card">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M2 12h20"/></svg>
+            </div>
+            <span class="cred-yr">2024–25</span>
+            <p class="cred-title">Placement Representative (CSE), NIT Jalandhar</p>
+          </div>
+          <div class="cred-card tilt-card">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5c2-1 5-1 7 0v14c-2-1-5-1-7 0V5Z"/><path d="M22 5c-2-1-5-1-7 0v14c2-1 5-1 7 0V5Z"/></svg>
+            </div>
+            <span class="cred-yr">2023–25</span>
+            <p class="cred-title">Teaching Assistant, Department of CSE, NIT Jalandhar</p>
+          </div>
+          <div class="cred-card tilt-card">
+            <div class="cred-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V3"/><path d="M4 4h13l-2.5 4L17 12H4"/></svg>
+            </div>
+            <span class="cred-yr">2021–22</span>
+            <p class="cred-title">Convenor, Social Service Club, Tezpur University Students' Council</p>
+          </div>
         </div>
       </div>
     </div>
@@ -394,6 +468,7 @@
 
   <!-- CONTACT -->
   <section id="contact" class="contact">
+    <div class="fx-dots" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Contact</div>
@@ -406,8 +481,9 @@
         </div>
         <div class="contact-list reveal">
           <div class="contact-row"><span class="label">EMAIL</span><span class="val-group"><a class="val" href="mailto:rupamsah425@gmail.com">rupamsah425@gmail.com</a><button class="copy-btn" data-copy="rupamsah425@gmail.com" aria-label="Copy email address" type="button">⧉</button></span></div>
-          <div class="contact-row"><span class="label">PHONE</span><a class="val" href="tel:+918217463080">+91 82174 63080</a></div>
+          <div class="contact-row"><span class="label">PHONE</span><a class="val" href="tel:+918638524301">+91 86385 24301</a></div>
           <div class="contact-row"><span class="label">LINKEDIN</span><a class="val" href="https://www.linkedin.com/in/rupam-sah-a258101b4" target="_blank" rel="noopener">Connect on LinkedIn</a></div>
+          <div class="contact-row"><span class="label">GITHUB</span><a class="val" href="https://github.com/rupamsah0123" target="_blank" rel="noopener">rupamsah0123</a></div>
           <div class="contact-row"><span class="label">GOOGLE SCHOLAR</span><a class="val" href="https://scholar.google.com/citations?user=okQ1f6YAAAAJ&hl=en" target="_blank" rel="noopener">View publications</a></div>
           <div class="contact-row"><span class="label">RÉSUMÉ</span><a class="val" href="resume.pdf" download>Download PDF ↓</a></div>
           <div class="contact-row"><span class="label">FEEDBACK</span><a class="val" href="feedback.html">Send feedback →</a></div>

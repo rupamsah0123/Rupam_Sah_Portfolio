@@ -1,52 +1,141 @@
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---------- Theme toggle (light / dark) ---------- */
-  const themeButtons = [document.getElementById('themeToggle'), document.getElementById('themeToggleMobile')].filter(Boolean);
-  function updateThemeIcons(){
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    themeButtons.forEach(btn => { btn.textContent = isDark ? '☀' : '☾'; });
-  }
-  updateThemeIcons();
-  themeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if(isDark){
-        document.documentElement.removeAttribute('data-theme');
-        try{ localStorage.setItem('rs-theme', 'light'); }catch(e){}
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        try{ localStorage.setItem('rs-theme', 'dark'); }catch(e){}
-      }
-      updateThemeIcons();
-    });
-  });
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Publication filters ---------- */
-  const pubFilters = document.querySelectorAll('.pub-filter');
-  const pubs = document.querySelectorAll('.pub');
-  pubFilters.forEach(btn => {
-    btn.addEventListener('click', () => {
-      pubFilters.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      pubs.forEach(pub => {
-        const show = filter === 'all' || pub.dataset.venue === filter;
-        pub.classList.toggle('is-hidden', !show);
+  /* ============================================================
+     MOBILE NAV — runs first, fully guarded. A missing element
+     anywhere else in this file must never be able to stop this
+     from working.
+     ============================================================ */
+  (function initMobileNav(){
+    const burger = document.getElementById('burgerBtn');
+    const mobilePanel = document.getElementById('mobilePanel');
+    if(!burger || !mobilePanel) return;
+
+    burger.addEventListener('click', () => {
+      const open = document.body.classList.toggle('nav-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    mobilePanel.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
       });
     });
-  });
+
+    // Close on Escape, and close if the viewport is resized past the
+    // mobile breakpoint while the panel happens to be open.
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && document.body.classList.contains('nav-open')){
+        document.body.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 880 && document.body.classList.contains('nav-open')){
+        document.body.classList.remove('nav-open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+
+  /* ---------- Hero typewriter intro ("Hi, I am Rupam Sah") ---------- */
+  (function initHeroTypewriter(){
+    const el = document.getElementById('heroTypewriter');
+    if(!el) return;
+
+    const phrases = ['Hi, I am Rupam Sah'];
+
+    if(reduceMotion){
+      el.textContent = phrases[0];
+      return;
+    }
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const TYPE_SPEED = 90;
+    const DELETE_SPEED = 45;
+    const HOLD_AFTER_TYPE = 1400;
+    const HOLD_AFTER_DELETE = 500;
+
+    function tick(){
+      const current = phrases[phraseIndex];
+
+      if(!deleting){
+        charIndex++;
+        el.textContent = current.slice(0, charIndex);
+        if(charIndex === current.length){
+          deleting = true;
+          setTimeout(tick, HOLD_AFTER_TYPE);
+          return;
+        }
+        setTimeout(tick, TYPE_SPEED);
+      } else {
+        charIndex--;
+        el.textContent = current.slice(0, charIndex);
+        if(charIndex === 0){
+          deleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(tick, HOLD_AFTER_DELETE);
+          return;
+        }
+        setTimeout(tick, DELETE_SPEED);
+      }
+    }
+
+    tick();
+  })();
+
+  /* ---------- Theme toggle (light / dark) ---------- */
+  (function initThemeToggle(){
+    const themeButtons = [document.getElementById('themeToggle'), document.getElementById('themeToggleMobile')].filter(Boolean);
+    if(!themeButtons.length) return;
+    function updateThemeIcons(){
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeButtons.forEach(btn => { btn.textContent = isDark ? '☀' : '☾'; });
+    }
+    updateThemeIcons();
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if(isDark){
+          document.documentElement.removeAttribute('data-theme');
+          try{ localStorage.setItem('rs-theme', 'light'); }catch(e){}
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          try{ localStorage.setItem('rs-theme', 'dark'); }catch(e){}
+        }
+        updateThemeIcons();
+      });
+    });
+  })();
+
+  /* ---------- Publication filters ---------- */
+  (function initPubFilters(){
+    const pubFilters = document.querySelectorAll('.pub-filter');
+    const pubs = document.querySelectorAll('.pub');
+    if(!pubFilters.length) return;
+    pubFilters.forEach(btn => {
+      btn.addEventListener('click', () => {
+        pubFilters.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        pubs.forEach(pub => {
+          const show = filter === 'all' || pub.dataset.venue === filter;
+          pub.classList.toggle('is-hidden', !show);
+        });
+      });
+    });
+  })();
 
   /* ---------- Copy-to-clipboard buttons ---------- */
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       const text = btn.dataset.copy;
-      try{
-        await navigator.clipboard.writeText(text);
-      } catch(e){
-        /* clipboard API unavailable — silently ignore, mailto link still works */
-      }
+      try{ await navigator.clipboard.writeText(text); } catch(e){ /* mailto link still works */ }
       const original = btn.textContent;
       btn.textContent = '✓';
       btn.classList.add('copied');
@@ -54,25 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Mobile nav toggle ---------- */
-  const burger = document.getElementById('burgerBtn');
-  const mobilePanel = document.getElementById('mobilePanel');
-
-  burger.addEventListener('click', () => {
-    const open = document.body.classList.toggle('nav-open');
-    burger.setAttribute('aria-expanded', open);
-  });
-
-  mobilePanel.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.body.classList.remove('nav-open');
-      burger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
   /* ---------- Scroll progress bar ---------- */
   const progressBar = document.getElementById('progressBar');
   function updateProgress(){
+    if(!progressBar) return;
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
@@ -82,25 +156,24 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Back to top button ---------- */
   const toTop = document.getElementById('toTop');
   function updateToTop(){
-    if(window.scrollY > 480){ toTop.classList.add('show'); }
-    else{ toTop.classList.remove('show'); }
+    if(!toTop) return;
+    toTop.classList.toggle('show', window.scrollY > 480);
   }
-  toTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  if(toTop){
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
   /* ---------- Active nav link on scroll ---------- */
   const navLinks = document.querySelectorAll('[data-nav]');
   const sections = Array.from(navLinks)
-    .map(link => document.querySelector(link.getAttribute('href')))
+    .map(link => { try{ return document.querySelector(link.getAttribute('href')); } catch(e){ return null; } })
     .filter(Boolean);
 
   function updateActiveNav(){
+    if(!sections.length) return;
     let currentId = '';
     const scrollPos = window.scrollY + 120;
-    sections.forEach(sec => {
-      if(sec.offsetTop <= scrollPos){ currentId = sec.id; }
-    });
+    sections.forEach(sec => { if(sec.offsetTop <= scrollPos){ currentId = sec.id; } });
     navLinks.forEach(link => {
       link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
     });
@@ -132,17 +205,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- Scroll-triggered reveal, staggered by position within its group ---------- */
   const revealEls = document.querySelectorAll('.reveal');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Give siblings that reveal together a small, increasing delay so they
-  // step in one after another instead of popping in all at once.
   const groupCounters = new WeakMap();
   revealEls.forEach(el => {
     const parent = el.parentElement;
     const n = groupCounters.get(parent) || 0;
-    if(!reduceMotion){
-      el.style.setProperty('--reveal-delay', Math.min(n, 4) * 90 + 'ms');
-    }
+    if(!reduceMotion){ el.style.setProperty('--reveal-delay', Math.min(n, 4) * 90 + 'ms'); }
     groupCounters.set(parent, n + 1);
   });
 
@@ -182,6 +249,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------- Ambient spotlight for any other section that opts in ---------- */
+  if(window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.fx-spot-target').forEach(section => {
+      section.addEventListener('mousemove', (e) => {
+        const rect = section.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        section.style.setProperty('--mx', x + '%');
+        section.style.setProperty('--my', y + '%');
+      });
+    });
+  }
+
   /* ---------- Button hover glow follows the cursor ---------- */
   if(window.matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.btn').forEach(btn => {
@@ -193,10 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Subtle 3D tilt on cards + hero photo ---------- */
+  /* ---------- Subtle 3D tilt on cards ---------- */
   if(!reduceMotion && window.matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.tilt-card').forEach(card => {
-      const strength = 8; // max degrees of rotation
+      const strength = 8;
       card.addEventListener('mousemove', (e) => {
         const r = card.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
@@ -213,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Animated stat counters (hero) ---------- */
+  /* ---------- Animated stat counters ---------- */
   const counters = document.querySelectorAll('[data-count]');
   function animateCounter(el){
     const target = parseFloat(el.dataset.count);
@@ -228,9 +308,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const start = performance.now();
     function tick(now){
       const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3); // ease-out cubic
-      const value = target * eased;
-      el.textContent = prefix + value.toFixed(decimals) + suffix;
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
       if(p < 1){ requestAnimationFrame(tick); }
     }
     requestAnimationFrame(tick);
@@ -239,10 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if('IntersectionObserver' in window){
       const cio = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if(entry.isIntersecting){
-            animateCounter(entry.target);
-            cio.unobserve(entry.target);
-          }
+          if(entry.isIntersecting){ animateCounter(entry.target); cio.unobserve(entry.target); }
         });
       }, { threshold: 0.4 });
       counters.forEach(el => cio.observe(el));
@@ -250,5 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
       counters.forEach(animateCounter);
     }
   }
+
+  /* ---------- Animated number-draw on eyebrow accent lines ---------- */
+  // Handled purely in CSS via .reveal.in — see .eyebrow::before transition in style.css
 
 });
