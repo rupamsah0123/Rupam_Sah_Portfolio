@@ -1,8 +1,8 @@
-// ============================================================
+// 
 // Feedback form — validation, star rating, async submit
 // Works with Formspree (or any endpoint that accepts POST + FormData
 // and returns JSON). See README for setup steps.
-// ============================================================
+// 
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const messageField = document.getElementById('fbMessage');
   const counter = document.getElementById('fbCounter');
 
-  /* ---------- Character counter ---------- */
+  /*  Character counter  */
   function updateCounter(){
     const len = messageField.value.length;
     counter.textContent = `${len} / 1000`;
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   messageField.addEventListener('input', updateCounter);
   updateCounter();
 
-  /* ---------- Star rating ---------- */
+  /* Star rating  */
   const stars = document.querySelectorAll('.fb-star');
   const ratingInput = document.getElementById('fbRatingValue');
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     paintStars(Number(ratingInput.value) || 0);
   });
 
-  /* ---------- Validation ---------- */
+  /*  Validation  */
   function setError(fieldId, message){
     const errEl = form.querySelector(`[data-error-for="${fieldId}"]`);
     const inputEl = document.getElementById(fieldId);
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('change', () => setError(id, ''));
   });
 
-  /* ---------- Toast for network errors ---------- */
+  /*  Toast for network errors  */
   function showToast(message){
     let toast = document.querySelector('.fb-toast');
     if(!toast){
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toast._hideTimer = setTimeout(() => toast.classList.remove('show'), 4500);
   }
 
-  /* ---------- Submit ---------- */
+  /*  Submit  */
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 

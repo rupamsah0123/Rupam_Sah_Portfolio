@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ============================================================
+  /* 
      MOBILE NAV — runs first, fully guarded. A missing element
      anywhere else in this file must never be able to stop this
      from working.
-     ============================================================ */
+      */
   (function initMobileNav(){
     const burger = document.getElementById('burgerBtn');
     const mobilePanel = document.getElementById('mobilePanel');
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  /* ---------- Hero typewriter intro ("Hi, I am Rupam Sah") ---------- */
+  /*  Hero typewriter intro ("Hi, I am Rupam Sah")  */
   (function initHeroTypewriter(){
     const el = document.getElementById('heroTypewriter');
     if(!el) return;
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  /* ---------- Publication filters ---------- */
+  /*  Publication filters  */
   (function initPubFilters(){
     const pubFilters = document.querySelectorAll('.pub-filter');
     const pubs = document.querySelectorAll('.pub');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  /* ---------- Copy-to-clipboard buttons ---------- */
+  /*  Copy-to-clipboard buttons  */
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       const text = btn.dataset.copy;
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Scroll progress bar ---------- */
+  /*  Scroll progress bar  */
   const progressBar = document.getElementById('progressBar');
   function updateProgress(){
     if(!progressBar) return;
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.style.width = pct + '%';
   }
 
-  /* ---------- Back to top button ---------- */
+  /*  Back to top button  */
   const toTop = document.getElementById('toTop');
   function updateToTop(){
     if(!toTop) return;
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  /* ---------- Active nav link on scroll ---------- */
+  /*  Active nav link on scroll  */
   const navLinks = document.querySelectorAll('[data-nav]');
   const sections = Array.from(navLinks)
     .map(link => { try{ return document.querySelector(link.getAttribute('href')); } catch(e){ return null; } })
@@ -179,14 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Sticky header shadow once page has scrolled ---------- */
+  /*  Sticky header shadow once page has scrolled  */
   const siteHeader = document.getElementById('siteHeader');
   function updateHeaderShadow(){
     if(!siteHeader) return;
     siteHeader.classList.toggle('scrolled', window.scrollY > 8);
   }
 
-  /* ---------- Combined scroll handler (throttled via rAF) ---------- */
+  /*  Combined scroll handler (throttled via rAF) */
   let ticking = false;
   function onScroll(){
     if(!ticking){
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Scroll-triggered reveal, staggered by position within its group ---------- */
+  /*  Scroll-triggered reveal, staggered by position within its group  */
   const revealEls = document.querySelectorAll('.reveal');
   const groupCounters = new WeakMap();
   revealEls.forEach(el => {
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach(el => el.classList.add('in'));
   }
 
-  /* ---------- Hero scroll cue ---------- */
+  /*  Hero scroll cue  */
   const scrollCue = document.getElementById('scrollCue');
   if(scrollCue){
     scrollCue.addEventListener('click', () => {
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Hero spotlight follows the cursor ---------- */
+  /*  Hero spotlight follows the cursor  */
   const hero = document.querySelector('.hero');
   const spotlight = document.getElementById('heroSpotlight');
   if(hero && spotlight && window.matchMedia('(hover:hover)').matches){
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Ambient spotlight for any other section that opts in ---------- */
+  /*  Ambient spotlight for any other section that opts in  */
   if(window.matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.fx-spot-target').forEach(section => {
       section.addEventListener('mousemove', (e) => {
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Button hover glow follows the cursor ---------- */
+  /*  Button hover glow follows the cursor  */
   if(window.matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('mousemove', (e) => {
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Subtle 3D tilt on cards ---------- */
+  /*  Subtle 3D tilt on cards  */
   if(!reduceMotion && window.matchMedia('(hover:hover)').matches){
     document.querySelectorAll('.tilt-card').forEach(card => {
       const strength = 8;
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Animated stat counters ---------- */
+  /*  Animated stat counters  */
   const counters = document.querySelectorAll('[data-count]');
   function animateCounter(el){
     const target = parseFloat(el.dataset.count);
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ---------- Animated number-draw on eyebrow accent lines ---------- */
+  /*  Animated number-draw on eyebrow accent lines  */
   // Handled purely in CSS via .reveal.in — see .eyebrow::before transition in style.css
 
 });

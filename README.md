@@ -74,7 +74,7 @@ If the project is deployed, add your live website link here:
 
 The project includes a feedback section where users can submit their feedback about the website.
 
-## 👨 Author
+##  Author
 
 **Your Name**
 
